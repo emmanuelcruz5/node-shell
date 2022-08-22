@@ -1,22 +1,7 @@
-//Output a prompt
-process.stdout.write("prompt > ");
+const pwd = require('./pwd');
+const ls = require('./ls');
+const cat = require('./cat');
+// ls();
+// pwd();
+cat();
 
-const validCommands = ["pwd"];
-const cwd = process.cwd(); //the current working directory
-
-// The stdin 'data' event fires after a user types in a line
-process.stdin.on("data", (data) => {
-  if (!validCommands.includes(data.toString().trim())) {
-    process.stdout.write(
-      `"${data.toString().trim()}"` + " is not a vaild command"
-    );
-  }
-
-  if (data.toString().trim() === "pwd") {
-    process.stdout.write(cwd);
-  }
-
-  process.stdout.write("\nprompt > ");
-});
-
-//console.log(process.cwd());
